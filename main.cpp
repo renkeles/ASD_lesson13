@@ -115,7 +115,7 @@ int traversalLinks[peaks] = {0};
 int visited[peaks] = {0};
 void traversalCount(int st){
     visited[st] = 1;
-
+    traversalLinks[st]++;
 
 
     for(int i = 0; i < peaks; i++){
@@ -153,7 +153,8 @@ int main() {
     std::cout << std::endl;
 
     traversalCount(0);
-    printArr(adjacencyLinks, peaks);
+    printArr(traversalLinks, peaks);
 
     return 0;
 }
+
