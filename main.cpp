@@ -67,6 +67,7 @@ void printList(List* lst){
 
 
 const size_t peaks = 7;
+
 int mas[peaks][peaks] = {   { 0, 1, 0, 1, 0, 0, 1 },
                             { 1, 0, 1, 0, 0, 0, 0 },
                             { 0, 1, 0, 0, 0, 0, 0 },
@@ -74,6 +75,11 @@ int mas[peaks][peaks] = {   { 0, 1, 0, 1, 0, 0, 1 },
                             { 0, 0, 0, 0, 0, 1, 0 },
                             { 0, 0, 0, 1, 1, 0, 1 },
                             { 1, 0, 0, 0, 0, 1, 0 } };
+
+
+
+
+
 int nodes[peaks] = {0};
 
 
@@ -115,17 +121,21 @@ int traversalLinks[peaks] = {0};
 int visited[peaks] = {0};
 void traversalCount(int st){
     visited[st] = 1;
-    traversalLinks[st]++;
+    //printf("%c\t", st + 65);
+    //traversalLinks[st]++;
 
 
     for(int i = 0; i < peaks; i++){
 
+        if(mas[st][i] == 1 && visited[i]){
+            traversalLinks[st]++;
+        }
         if(mas[st][i] == 1 && !visited[i]){
-
             traversalCount(i);
             traversalLinks[st]++;
         }
     }
+
 
 
 }
@@ -157,4 +167,3 @@ int main() {
 
     return 0;
 }
-
